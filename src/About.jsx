@@ -1,7 +1,11 @@
+import User from "./user";
+import Userc from "./Userclass";
 function About(){
     return(
-        <div>
-            <h1>Hello</h1>
+        <div style={{height:"100vh"}}>
+            <h1 >About</h1>
+            <User name={"Linshiy"}/>
+            <Userc name={"LinshiyClass"}/>
         </div>
     );
 }
