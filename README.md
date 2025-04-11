@@ -61,15 +61,16 @@ for state variable we are using this.state! this.state is a bigobject contains a
 when classcomponent rendering,first calls constructor,then render method,then child constructor,then child render method,then child componentdidmount method,finally calls parent componentdidMunt method
 
 if parent have multple childen it follows:
-    parent constructor
-    parent render
-    firstchild constructor
-    firstchild render
-    secondchild constructor
+    parent constructor             
+    parent render                  |
+    firstchild constructor         |
+    firstchild render              |  render phase
+    secondchild constructor        |
     secondchild render
-    firstchild componentdidmount
-    secondchild componentdidmount
-    parent componentdidmount
+    <!-- Dom updated through below-->
+    firstchild componentdidmount   |
+    secondchild componentdidmount  |  commit phase
+    parent componentdidmount       |
 
 
 **componentDidMount**
@@ -83,3 +84,58 @@ react is not waiting for api call
 
 **lifecycleMethod**
 1.rendering/mounting
+2.updating
+3.unmounting
+
+
+**componentWIllUnmount**
+-used for cleanup
+-react is using only one html page.when we are requestiong for another page react will be updated the page.at the time componentWillUnmount clean up that page.(automatically cleanup,but in the case od set intervel we want to write code)
+
+eg:componentDidMount(){
+   this.timer= setInterval(()=>{
+        console.log("nameaset")
+    },1000)
+}
+
+componentWillUnmount(){
+    clearInterval(this.timer)
+    console.log("component unmount")
+}
+
+
+**unmounting in functionbased component**
+useeffect(()=>{
+    const timer=setInterval(()=>{
+        console.log("nameset")
+    },1000)
+
+    console.log("useeffect")
+<!-- unmounting -->
+    return()=>{
+        clearInterval(timer);
+        console.log("unmount)
+    }
+},[]);
+
+
+**react advantage**
+-reusable
+-maintainable
+-readable
+-testable
+
+
+
+
+
+
+
+
+
+
+
+
+
+**doubts**
+<!-- reconsilation -->

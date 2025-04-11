@@ -4,18 +4,29 @@ class Userc extends React.Component {
         super(props);
         this.state={
             count:0,
-            count1:1
+            count1:1,
+            userInfo:{
+                login:"dumm",
+                avatar_url:" "
+            }
         }
     }
 
-    componentDidMount(){
-        console.log("COMPONENTDIDMOUNT")
+    async componentDidMount(){
+        const data=await fetch("https://api.github.com/users/linshiya12")
+        const json=await data.json()
+        console.log(json)
+        this.setState({
+            userInfo:json
+        })
     }
     render() {
         const {count,count1}=this.state;
+        const {login,avatar_url}=this.state.userInfo
         return (
             <div className="user-card">
-                <h2>Name:{this.props.name}</h2>
+                <h2>Name:{login}</h2>
+                <img src={avatar_url} alt="" />
                 <h3>Location:Mannarkkad</h3>
                 <h4>Contact:90374658</h4>
                 <h3>Count:{count}</h3>
