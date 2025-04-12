@@ -5,7 +5,11 @@ import Contact from './contact.jsx'
 import ErrorPage from './Error.jsx';
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Menu from './RestaurantMenu.jsx';
+import { lazy,Suspense } from 'react';
+import Shimmer from './shimmer.jsx';
 
+
+const Grocery=lazy(()=>import('./Grocery.jsx'))
 const router = createBrowserRouter([
     { path: "/", element: <Layout /> ,
     children:[
@@ -13,6 +17,7 @@ const router = createBrowserRouter([
         { path: "/about", element: <About /> },
         {path:"/contact",element: <Contact />},
         {path:"/menu/:menuId",element:<Menu/>},
+        {path:"/grocery",element:<Suspense fallback={<Shimmer/>}> <Grocery/></Suspense>},
       ],
     errorElement:<ErrorPage/>}
 ]);

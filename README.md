@@ -22,6 +22,7 @@ If you are developing a production application, we recommend using TypeScript an
 
 ***React hooks:***
 -Normal javascript  function.it has some    super powers
+-its kind of some utility function
 -useState()- superpowerful state variable in react
 -useEffect()
 
@@ -126,8 +127,43 @@ useeffect(()=>{
 -testable
 
 
+**creating owncustomhooks**
+-It's a normal JavaScript helper function.
+-We can create our own custom hooks, just like we create components.
+-The only rule is: the name of a hook must start with use, like useRestaurantMenu.
 
 
+**bundling**
+-Bundling is one of the main functionalities of Vite (and other build tools).
+-Bundling means combining all your files (JavaScript, CSS, etc.) into one or more optimized files that the browser can load efficiently.
+-This helps improve performance and loading speed in production.
+
+
+**chunking/lazy loading/dynamic bundling**
+whenever user going on to the particular page,then only load the page
+Lazy loading means loading a component only when it is needed, not during the initial render.
+
+For example:
+    -Imagine your app has two main components:
+        Flight Booking
+        Bus Booking
+    -On initial load, only Bus Booking is loaded.
+    -Flight Booking is loaded only when the user clicks on it.
+
+-This improves performance by reducing the initial bundle size and loading only what's necessary.
+-for implimenting this we are using lazy,suspense and fallback
+
+
+**suspense**
+Suspense is a special React component used to handle lazy loading.
+It tells React:
+👉 “While this lazy-loaded component is loading, show something else (like a loader).”
+
+
+**fallback**
+-fallback is a prop you pass to Suspense.
+-It defines what to show while waiting for the component to load.
+-Usually, it’s a loading spinner, text, or a skeleton screen.
 
 
 

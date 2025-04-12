@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import OfferCard from "./OfferCard";
 import MenuTitle from "./MenuTitle";
-import { MenuApi,MenuEnd } from "./utils/constants";
 import { useParams } from "react-router-dom";
+import useRestaurantmenu from "./utils/useRestaurantmenu"
 
 function scrollOffers(direction) {
   const container = document.querySelector(".offers-wrapper");
@@ -16,20 +16,8 @@ function scrollOffers(direction) {
 
 
 function RestaurantMenu() {
-  const [RestMenu, setRestMenu] = useState(null);
   const {menuId}=useParams()
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      MenuApi+menuId
-    );
-    const json = await data.json();
-    setRestMenu(json.data);
-  };
+  const RestMenu=useRestaurantmenu(menuId)
 
   if (!RestMenu || !RestMenu?.cards?.[2]?.card?.card?.info) {
     return <Shimmer />;

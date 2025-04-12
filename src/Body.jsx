@@ -3,6 +3,7 @@ import { CDN_URL } from "./utils/constants";
 import { useState,useEffect} from "react";
 import Shimmer from "./shimmer.jsx"
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./utils/useOnlineStatus";
 
 function RestaurentCard(props){
     const {resData}=props;
@@ -53,7 +54,8 @@ function Body(){
         setSearchFilt(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
     
-  
+    const onlinestatus=useOnlineStatus();
+    if (onlinestatus==false) return(<h1>you are offline,check internet connection</h1>)
     
     return FiltObj.length===0?<Shimmer/>:(
         <div className="body">
