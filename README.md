@@ -166,7 +166,22 @@ It tells React:
 -Usually, it’s a loading spinner, text, or a skeleton screen.
 
 
+**postcssrc**
+parcel is used postcssrs to read tailwind
 
+
+**useRef**
+-useRef is a hook in React used to store a reference to a DOM element or value without re-rendering the component.
+-We use the useRef hook when we want to directly access or reference a DOM element, like an input field.
+-For example, if we have an input field for email verification and we want to get its value without using state, we can use useRef.
+-First, we create a ref using const emailRef = useRef(null), then attach it to the input field using ref={emailRef}.
+-Later, we can access the value like emailRef.current.value.
+
+
+**higherordercomponent**
+-it's a function that takes a component and then enhances the component. then return back
+
+example:giving promotedlable doe products
 
 
 
@@ -175,3 +190,4 @@ It tells React:
 
 **doubts**
 <!-- reconsilation -->
+<!-- sass -->

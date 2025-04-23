@@ -1,4 +1,10 @@
+import {Link} from 'react-router-dom'
+
 const Footer = () => {
+
+    const companyLinks = [
+        "About Us" , "Swiggy Corporate" , "Careers" , "Team" , 
+    ]
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -10,7 +16,7 @@ const Footer = () => {
                 <div className="footer-section">
                     <h4>Company</h4>
                     <ul>
-                        <li>About Us</li>
+                        {/* <li>About Us</li>
                         <li>Swiggy Corporate</li>
                         <li>Careers</li>
                         <li>Team</li>
@@ -19,7 +25,11 @@ const Footer = () => {
                         <li>Swiggy Dineout</li>
                         <li>Swiggy Genie</li>
                         <li>Minis</li>
-                        <li>Pyng</li>
+                        <li>Pyng</li> */}
+{
+companyLinks.map((link)=>(
+<Link to={link} key={link}>{link}</Link>
+))}
                     </ul>
                 </div>
 
