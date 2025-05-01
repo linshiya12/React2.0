@@ -9,6 +9,7 @@ import { lazy,Suspense } from 'react';
 import Shimmer from './shimmer.jsx';
 import Exam from './Exam.jsx';
 import Exam2 from './Exam2.jsx';
+import Counter from './Counterreducer.jsx';
 
 
 const Grocery=lazy(()=>import('./Grocery.jsx'))
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         {path:"/contact",element: <Contact />},
         {path:"/menu/:menuId",element:<Menu/>},
         {path:"/grocery",element:<Suspense fallback={<Shimmer/>}> <Grocery/></Suspense>},
-        {path:"/one",element: <Exam/>},
+        {path:"/one",element: <Counter/>},
 
       ],
     errorElement:<ErrorPage/>}
